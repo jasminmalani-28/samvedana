@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+<!-- For Java Script -->
+{% block script %}
+{% endblock %}
+{% block jquery %}
+{% endblock %}
+<!-- Create Nav Bar -->
+{% block navbar %}
+    <a href="{{ url_for('Distribution_menu') }}"><i class="fas fa-home"></i>Home</a>
+    <a href="{{ url_for('registration') }}"><i class="fa fa-registered"></i>Registration</a>
+    <a href="{{ url_for('report') }}"><i class="fas fa-file"></i>Report</a>
+    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+{% endblock %}
+
+
+{% block content %}
+    <h3>Distribution</h3>
+    <hr>
+    <div class="container">
+
+        <div class="media-container-row">
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="static/img/ration.jpg" alt="Mobirise" title="" width="180" height="180" media-simple="true">
+                    </div>
+                    <div class="card-box">
+                        <a href="{{ url_for('ration') }}">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">Ration Distrubution</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="static/img/tadpatri.jpg" alt="Mobirise" title="" width="180" height="180" media-simple="true">
+                    </div>
+                    <div class="card-box ">
+                        <a href="{{ url_for('tadpatri') }}">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">Tadpatri Distubution</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="static/img/SewingMachine.jpg" alt="Mobirise" title="" width="180" height="180" media-simple="true">
+                    </div>
+                    <div class="card-box">
+                        <a href="{{ url_for('sewingmachine') }}">
+                            <h4 class="card-title pb-3 mbr-fonts-style display-7">SewingMachine Distrubution</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

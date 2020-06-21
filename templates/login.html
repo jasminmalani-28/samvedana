@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Samvedana Trust</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+	</head>
+	<body class="loggedin">
+		<!-- Nav bar -->
+		<nav class="navtop">
+			<div>
+				<img src="static/img/samvedana_logo.jpg" alt="Logo" width="60" height="60">
+				<h1>&nbsp;&nbsp;Samvedana Trust</h1>
+				{% block navbar %} {% endblock %}
+     		</div>
+		</nav>
+		<!-- Container -->
+		<div class="login">
+			<h1>Login</h1>
+			<div class="links">
+				<a href="{{ url_for('login') }}" class="active">Login</a>
+			</div>
+			<form action="{{ url_for('login') }}" method="post">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+	</body>
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">© 2020 Copyright:
+			<a href="https://samvedananet.wordpress.com/"> Samvedana Trust</a></span><br>
+			<span class="text-muted">Design and Developed By <strong>Department of Computer Science Gujarat Vidyapith</strong></span>
+
+		</div>
+	</footer
+</html>

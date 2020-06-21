@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Samvedana Trust</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='livesearch/jquery-ui.css') }}">
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='livesearch/jquery-ui.js') }}"></script>
+
+
+	</head>
+	<body class="loggedin">
+		<!-- Nav bar -->
+		<nav class="navtop">
+			<div>
+				<img src="static/img/samvedana_logo.jpg" alt="Logo" width="60" height="60">
+				<h1>&nbsp;&nbsp;Samvedana Trust</h1>
+				<a href="{{ url_for('Distribution_menu') }}"><i class="fas fa-home"></i>Home</a>
+				<a href="{{ url_for('registration') }}"><i class="fa fa-registered"></i>Registration</a>
+				<a href="{{ url_for('report') }}"><i class="fa fa-file"></i>Report</a>
+				<a href="{{ url_for('download') }}"><i class="fa fa-download"></i>Download</a>
+				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+     		</div>
+		</nav>
+		<!-- Content -->
+		<div id="page-container">
+			<div id="content-wrap">
+				<div class="content">
+					 {% if ration %}
+						<h3>Ration Report</h3>
+						<hr>
+							<table class="table table-striped table-hover table-bordered">
+							  <thead>
+								<tr>
+								  <th scope="col">Land_AccountNumber</th>
+								  <th scope="col">Name</th>
+								  <th scope="col">Village Name</th>
+								  <th scope="col">Date</th>
+								  <th scope="col">Type</th>
+								  <th scope="col">Quantity</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								{% for x in ration %}
+								<tr>
+									<th>{{x['land_accountnumber']}}</th>
+									<th>{{x['beneficiary_name']}}</th>
+									<th>{{x['village_name']}}</th>
+									<th>{{x['date']}}</th>
+									<th>{{x['type']}}</th>
+									<th>{{x['quantity']}}</th>
+								</tr>
+								{% endfor %}
+
+							  </tbody>
+							</table>
+					{% endif %}
+
+					{% if tadpatri %}
+						<h3>Tadpatri Report</h3>
+						<hr>
+							<table class="table table-striped table-hover table-bordered">
+							  <thead>
+								<tr>
+								  <th scope="col">Land_AccountNumber</th>
+								  <th scope="col">Name</th>
+								  <th scope="col">Village Name</th>
+								  <th scope="col">Date</th>
+								  <th scope="col">Type</th>
+								  <th scope="col">Quantity</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								{% for x in tadpatri %}
+								<tr>
+									<th>{{x['land_accountnumber']}}</th>
+									<th>{{x['beneficiary_name']}}</th>
+									<th>{{x['village_name']}}</th>
+									<th>{{x['date']}}</th>
+									<th>{{x['type']}}</th>
+									<th>{{x['quantity']}}</th>
+								</tr>
+								{% endfor %}
+
+							  </tbody>
+							</table>
+					{% endif %}
+
+					{% if sewingMachine %}
+						<h3>SewingMachine Report</h3>
+						<hr>
+							<table class="table table-striped table-hover table-bordered">
+							  <thead>
+								<tr>
+								  <th scope="col">Land_AccountNumber</th>
+								  <th scope="col">Name</th>
+								  <th scope="col">Village Name</th>
+								  <th scope="col">Date</th>
+								  <th scope="col">Type</th>
+								  <th scope="col">Quantity</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								{% for x in sewingMachine %}
+								<tr>
+									<th>{{x['land_accountnumber']}}</th>
+									<th>{{x['beneficiary_name']}}</th>
+									<th>{{x['village_name']}}</th>
+									<th>{{x['date']}}</th>
+									<th>{{x['type']}}</th>
+									<th>{{x['quantity']}}</th>
+								</tr>
+								{% endfor %}
+
+							  </tbody>
+							</table>
+					{% endif %}
+				</div>
+		   </div>
+		   <footer class="footer" id="footer">
+				<div class="container">
+					<span class="text-muted">© 2020 Copyright:
+					<a href="https://samvedananet.wordpress.com/"> Samvedana Trust</a></span><br>
+					<span class="text-muted">Design and Developed By <strong>Department of Computer Science Gujarat Vidyapith</strong></span>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

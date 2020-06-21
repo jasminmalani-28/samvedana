@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Samvedana Trust</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='livesearch/jquery-ui.css') }}">
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='livesearch/jquery-ui.js') }}"></script>
+		<script>
+			{% block script %} {% endblock %}
+		</script>
+		{% block jquery %} {% endblock %}
+
+
+	</head>
+	<body class="loggedin">
+		<!-- Nav bar -->
+		<nav class="navtop">
+			<div>
+				<img src="static/img/samvedana_logo.jpg" alt="Logo" width="60" height="60">
+				<h1>&nbsp;&nbsp;Samvedana Trust</h1>
+				{% block navbar %} {% endblock %}
+     		</div>
+		</nav>
+		<!-- Content -->
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+
+	<footer class="footer" id="footer">
+		<div class="container">
+			<span class="text-muted">© 2020 Copyright:
+			<a href="https://samvedananet.wordpress.com/"> Samvedana Trust</a></span><br>
+			<span class="text-muted">Design and Developed By <strong>Department of Computer Science Gujarat Vidyapith</strong></span>
+		</div>
+	</footer>
+</html>

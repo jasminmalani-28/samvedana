@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+<!-- For Java Script -->
+{% block script %}
+{% endblock %}
+
+<!-- For Jquery -->
+{% block jquery %}
+<script>
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+		var land_accountnumber = [];
+		{% for accounts in landNumber %}
+		    land_accountnumber.push("{{accounts}}");
+		{% endfor %}
+		$( "#land_account" ).autocomplete({
+            source: land_accountnumber
+         });
+	});
+</script>
+{% endblock %}
+
+<!-- Create Nav Bar -->
+{% block navbar %}
+    <a href="{{ url_for('Distribution_menu') }}"><i class="fas fa-home"></i>Home</a>
+    <a href="{{ url_for('registration') }}"><i class="fa fa-registered"></i>Registration</a>
+    <a href="{{ url_for('report') }}"><i class="fa fa-file"></i>Report</a>
+    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+{% endblock %}
+
+{% block content %}
+
+<h3>Tadpatri Distribution</h3>
+<hr>
+        <form action="{{ url_for('tadpatri') }}" method="post" autocomplete="off">
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="land_account">Land-Account Number</label>
+                    <input type="text" class="form-control" id="land_account" name="land_account" placeholder="Enter Land Account Number" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" placeholder="Enter Village Name" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="10" required />
+                </div>
+            </div>
+            {% if info == '0' %}
+                <div class="row">
+					<div class="msg">
+                        {{msg}}
+                    </div>
+                </div>
+            {% else %}
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Information</h4>
+                            </div>
+                            <div class="modal-body">
+                                {% if info == '1' %}
+                                    <div class="alert alert-success" role="alert">
+                                        <p>{{msg}}</p>
+                                    </div>
+                                {% elif info == '2' %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <p>{{msg}}</p>
+                                    </div>
+                                {% elif info == '3' %}
+                                    <div class="alert alert-warning" role="alert">
+                                        <p>{{msg}}</p>
+                                         <a href="{{ url_for('registration') }}">Click hear For Registration</a>
+                                    </div>
+                                {% elif info == '4' %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>{{msg}}</strong>
+                                         <table>
+                                            <tr>
+                                                <td><strong>Land_accountNumber : </strong></td>
+                                                <td>{{ result['land_accountnumber'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Name:</strong></td>
+                                                <td>{{ result['beneficiary_name'] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Village Name :</strong></td>
+                                                <td>{{ result['village_name'] }}</td>
+                                            </tr>
+                                             <tr>
+                                                 <td><strong>Date:</strong></td>
+                                                <td>{{ result['date'] }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <button class="btn btn-primary btn-md" type="submit">Submit</button>
+        </form>
+
+{% endblock %}
